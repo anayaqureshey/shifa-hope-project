@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shifa & Hope Initiative | Heritage Crafts for Global Health</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        emerald: {
+                            800: '#064e3b',
+                            900: '#022c22',
+                        },
+                        amber: {
+                            500: '#f59e0b',
+                            600: '#d97706',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .page-content { display: none; }
+        .page-content.active { display: block; }
+    </style>
+</head>
+<body class="bg-slate-50 font-sans text-slate-800 min-h-screen flex flex-col">
+
+    <!-- NAVIGATION HEADER -->
+    <header class="bg-emerald-900 text-white sticky top-0 z-50 shadow-md">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex flex-wrap justify-between items-center">
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="showPage('home')">
+                <div class="w-10 h-10 rounded-full bg-amber-500 flex items-center justify-center text-emerald-900 font-bold text-xl">
+                    <i class="fa-solid fa-hand-holding-heart"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl font-bold tracking-tight text-amber-400">Shifa & Hope Initiative</h1>
+                    <p class="text-xs text-emerald-200">Heritage Crafts • Global Health Equity</p>
+                </div>
+            </div>
+
+            <!-- Nav Links -->
+            <nav class="flex items-center space-x-1 sm:space-x-4 text-sm font-medium mt-3 sm:mt-0">
+                <button onclick="showPage('home')" class="nav-btn px-3 py-2 rounded-lg hover:bg-emerald-800 transition text-amber-300 font-semibold" id="btn-home">Home</button>
+                <button onclick="showPage('shop')" class="nav-btn px-3 py-2 rounded-lg hover:bg-emerald-800 transition" id="btn-shop">Shop</button>
+                <button onclick="showPage('impact')" class="nav-btn px-3 py-2 rounded-lg hover:bg-emerald-800 transition" id="btn-impact">Peru Project</button>
+                <button onclick="showPage('story')" class="nav-btn px-3 py-2 rounded-lg hover:bg-emerald-800 transition" id="btn-story">Our Story</button>
+                <button onclick="showPage('contact')" class="nav-btn px-3 py-2 rounded-lg hover:bg-emerald-800 transition" id="btn-contact">Contact</button>
+                
+                <!-- Cart Button -->
+                <button onclick="toggleCart()" class="relative bg-amber-500 hover:bg-amber-600 text-emerald-950 px-3 py-2 rounded-lg font-bold flex items-center space-x-1 transition">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span id="cart-count" class="bg-emerald-900 text-white text-xs rounded-full px-2 py-0.5 ml-1">0</span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT CONTAINERS -->
+    <main class="flex-grow max-w-6xl w-full mx-auto px-4 py-8">
+
+        <!-- ================= HOME PAGE ================= -->
+        <section id="page-home" class="page-content active space-y-12">
+            <!-- Hero Banner -->
+            <div class="bg-gradient-to-r from-emerald-900 to-emerald-800 text-white rounded-2xl p-8 sm:p-12 shadow-xl text-center sm:text-left flex flex-col sm:flex-row items-center justify-between">
+                <div class="max-w-xl space-y-4">
+                    <span class="inline-block bg-amber-500/20 text-amber-300 text-xs px-3 py-1 rounded-full font-semibold border border-amber-500/30">100% Proceeds Fund Humanitarian Health Kits</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold leading-tight">Handmade Art Funding Healthcare for Underserved Communities</h2>
+                    <p class="text-emerald-100 text-sm sm:text-base">Founded by two Pakistani Muslim pre-med students bringing faith-inspired stewardship (Amanah) and cultural crafts to international clinical health access in Cusco, Peru.</p>
+                    <div class="pt-2 flex flex-wrap justify-center sm:justify-start gap-3">
+                        <button onclick="showPage('shop')" class="bg-amber-500 hover:bg-amber-600 text-emerald-950 px-6 py-3 rounded-xl font-bold shadow-md transition">Explore Handmade Shop</button>
+                        <button onclick="showPage('impact')" class="bg-emerald-800/80 hover:bg-emerald-700 text-white px-6 py-3 rounded-xl font-semibold border border-emerald-600 transition">See Peru Fieldwork</button>
+                    </div>
+                </div>
+                <div class="mt-8 sm:mt-0 w-48 h-48 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 text-6xl">
+                    <i class="fa-solid fa-heart-pulse"></i>
+                </div>
+            </div>
+
+            <!-- Impact Metrics -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm text-center">
+                    <div class="text-3xl font-extrabold text-emerald-800">$1,850+</div>
+                    <div class="text-xs text-slate-500 font-semibold uppercase tracking-wider mt-1">Raised for Medical Supplies</div>
+                </div>
+                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm text-center">
+                    <div class="text-3xl font-extrabold text-amber-600">120+</div>
+                    <div class="text-xs text-slate-500 font-semibold uppercase tracking-wider mt-1">Hygiene & Care Kits Assembled</div>
+                </div>
+                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm text-center">
+                    <div class="text-3xl font-extrabold text-emerald-800">Summer 2027</div>
+                    <div class="text-xs text-slate-500 font-semibold uppercase tracking-wider mt-1">Upcoming Andes Field Deployment</div>
+                </div>
+            </div>
+
+            <!-- Core Mission Pillar -->
+            <div class="bg-amber-50 border border-amber-200 rounded-2xl p-6 sm:p-8 flex flex-col md:flex-row items-center gap-6">
+                <div class="text-amber-600 text-4xl">
+                    <i class="fa-solid fa-seedling"></i>
+                </div>
+                <div class="space-y-2 text-center md:text-left">
+                    <h3 class="text-xl font-bold text-slate-900">Sadaqah Jariyah in Action</h3>
+                    <p class="text-slate-600 text-sm">Every keychain, tote bag, and coaster is hand-crafted by us. Proceeds are directly allocated toward purchasing pediatric health supplies, clean water tablets, and burn kits locally in Peru for rural mountain clinics.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SHOP PAGE ================= -->
+        <section id="page-shop" class="page-content space-y-8">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <div>
+                    <h2 class="text-2xl font-bold text-slate-900">Handcrafted Collection</h2>
+                    <p class="text-xs text-slate-500">Every item purchased directly funds 1 maternal or pediatric care kit in Peru.</p>
+                </div>
+            </div>
+
+            <!-- Product Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <!-- Product Item 1 -->
+                <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden flex flex-col">
+                    <div class="h-48 bg-emerald-100 flex items-center justify-center text-emerald-800 text-5xl">
+                        <i class="fa-solid fa-gem"></i>
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col justify-between space-y-4">
+                        <div>
+                            <span class="text-xs font-semibold text-amber-600 bg-amber-50 px-2 py-0.5 rounded">Calligraphy Resin</span>
+                            <h3 class="font-bold text-lg text-slate-900 mt-1">Resin "Shifa" (Healing) Keychain</h3>
+                            <p class="text-slate-600 text-xs mt-1">Hand-cast clear resin with gold leaf and traditional Arabic calligraphy symbol for health and healing.</p>
+                        </div>
+                        <div class="flex justify-between items-center pt-2 border-t border-slate-100">
+                            <span class="text-lg font-extrabold text-emerald-900">$14.00</span>
+                            <button onclick="addToCart('Resin Shifa Keychain', 14)" class="bg-emerald-800 hover:bg-emerald-900 text-white text-xs px-4 py-2 rounded-lg font-bold transition">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Item 2 -->
+                <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden flex flex-col">
+                    <div class="h-48 bg-amber-100 flex items-center justify-center text-amber-800 text-5xl">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col justify-between space-y-4">
+                        <div>
+                            <span class="text-xs font-semibold text-amber-600 bg-amber-50 px-2 py-0.5 rounded">Hand-Sewn Textile</span>
+                            <h3 class="font-bold text-lg text-slate-900 mt-1">Truck Art Floral Canvas Tote</h3>
+                            <p class="text-slate-600 text-xs mt-1">Durable canvas tote featuring hand-painted vibrant Pakistani truck-art floral patterns.</p>
+                        </div>
+                        <div class="flex justify-between items-center pt-2 border-t border-slate-100">
+                            <span class="text-lg font-extrabold text-emerald-900">$22.00</span>
+                            <button onclick="addToCart('Truck Art Canvas Tote', 22)" class="bg-emerald-800 hover:bg-emerald-900 text-white text-xs px-4 py-2 rounded-lg font-bold transition">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Item 3 -->
+                <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden flex flex-col">
+                    <div class="h-48 bg-teal-100 flex items-center justify-center text-teal-800 text-5xl">
+                        <i class="fa-solid fa-pump-soap"></i>
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col justify-between space-y-4">
+                        <div>
+                            <span class="text-xs font-semibold text-amber-600 bg-amber-50 px-2 py-0.5 rounded">Organic Skincare</span>
+                            <h3 class="font-bold text-lg text-slate-900 mt-1">Organic Black Seed & Rose Soap</h3>
+                            <p class="text-slate-600 text-xs mt-1">Cold-pressed organic soap infused with Nigella Sativa (black seed) oil and pure rosewater.</p>
+                        </div>
+                        <div class="flex justify-between items-center pt-2 border-t border-slate-100">
+                            <span class="text-lg font-extrabold text-emerald-900">$10.00</span>
+                            <button onclick="addToCart('Black Seed Soap Bar', 10)" class="bg-emerald-800 hover:bg-emerald-900 text-white text-xs px-4 py-2 rounded-lg font-bold transition">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ================= PERU IMPACT PAGE ================= -->
+        <section id="page-impact" class="page-content space-y-8">
+            <div class="bg-white rounded-xl border border-slate-200 p-6 sm:p-8 space-y-6">
+                <div>
+                    <span class="text-xs font-bold text-amber-600 tracking-wide uppercase">International Fieldwork</span>
+                    <h2 class="text-2xl font-bold text-slate-900">High-Altitude Community Health Drive • Cusco, Peru</h2>
+                    <p class="text-slate-600 text-sm mt-1">Indigenous communities in rural Andean valleys face significant geographical barriers to healthcare, leading to untreated respiratory infections and skin conditions.</p>
+                </div>
+
+                <!-- Financial Transparency Breakdown -->
+                <div class="border-t border-slate-100 pt-6">
+                    <h3 class="font-bold text-slate-900 mb-3 text-base">Financial Transparency & Allocation</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <div class="bg-slate-50 p-4 rounded-lg border border-slate-200">
+                            <div class="text-2xl font-bold text-emerald-800">70%</div>
+                            <div class="text-xs text-slate-600 mt-1 font-medium">Direct Medical & First Aid Supplies Purchased in Peru</div>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-lg border border-slate-200">
+                            <div class="text-2xl font-bold text-emerald-800">20%</div>
+                            <div class="text-xs text-slate-600 mt-1 font-medium">Mobile Clinic Transport & Local Translator Support</div>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-lg border border-slate-200">
+                            <div class="text-2xl font-bold text-emerald-800">10%</div>
+                            <div class="text-xs text-slate-600 mt-1 font-medium">Trinket Crafting Raw Material Re-investment</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Planned Travel Logistics Timeline -->
+                <div class="border-t border-slate-100 pt-6 space-y-4">
+                    <h3 class="font-bold text-slate-900 text-base">Project Deployment Timeline</h3>
+                    <div class="space-y-3 text-sm">
+                        <div class="flex items-start space-x-3">
+                            <div class="w-6 h-6 rounded-full bg-emerald-900 text-amber-400 text-xs flex items-center justify-center font-bold mt-0.5">1</div>
+                            <div>
+                                <strong>Phase 1 (Fall & Winter):</strong> E-commerce product creation, online sales campaigns, and partnership coordination with local Peru clinic networks.
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="w-6 h-6 rounded-full bg-emerald-900 text-amber-400 text-xs flex items-center justify-center font-bold mt-0.5">2</div>
+                            <div>
+                                <strong>Phase 2 (Spring):</strong> Procuring wholesale medical supplies, hygiene kits, and thermal skin protectants through partner suppliers in Cusco.
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="w-6 h-6 rounded-full bg-emerald-900 text-amber-400 text-xs flex items-center justify-center font-bold mt-0.5">3</div>
+                            <div>
+                                <strong>Phase 3 (Summer On-Site):</strong> Direct field deployment to assist mobile health clinic intake and distribute care packages to mountain villages.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= OUR STORY PAGE ================= -->
+        <section id="page-story" class="page-content space-y-8">
+            <div class="bg-white rounded-xl border border-slate-200 p-6 sm:p-8 space-y-6">
+                <div>
+                    <h2 class="text-2xl font-bold text-slate-900">Founders & Vision</h2>
+                    <p class="text-slate-600 text-sm mt-1">Combining faith-inspired values, heritage artistic traditions, and pre-med clinical aspirations.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+                    <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 space-y-3">
+                        <div class="w-12 h-12 rounded-full bg-amber-500 text-emerald-950 flex items-center justify-center text-xl font-bold">
+                            <i class="fa-solid fa-user-doctor"></i>
+                        </div>
+                        <h3 class="font-bold text-slate-900">Pre-Medical & Public Health Core</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">As undergraduate pre-medical students, we recognize that health equity requires active engagement outside classroom walls. This project allows us to gain hands-on operational leadership while addressing preventive health needs in underserved areas.</p>
+                    </div>
+
+                    <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 space-y-3">
+                        <div class="w-12 h-12 rounded-full bg-emerald-900 text-amber-400 flex items-center justify-center text-xl font-bold">
+                            <i class="fa-solid fa-hands-holding-child"></i>
+                        </div>
+                        <h3 class="font-bold text-slate-900">Heritage & Faith-Inspired Service</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">Grounded in Islamic traditions of stewardship (Amanah) and continuous charity (Sadaqah Jariyah), we fuse Pakistani artisan crafts with actionable global health advocacy.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= CONTACT PAGE ================= -->
+        <section id="page-contact" class="page-content space-y-8">
+            <div class="bg-white rounded-xl border border-slate-200 p-6 sm:p-8 max-w-2xl mx-auto space-y-6">
+                <div>
+                    <h2 class="text-2xl font-bold text-slate-900">Get Involved & Contact Us</h2>
+                    <p class="text-slate-600 text-sm mt-1">Interested in custom trinket orders, pre-med collaborations, or volunteering?</p>
+                </div>
+
+                <form onsubmit="handleFormSubmit(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Your Name</label>
+                        <input type="text" required class="w-full px-4 py-2 border border-slate-300 rounded-lg text-sm focus:outline-none focus:border-emerald-800">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Email Address</label>
+                        <input type="email" required class="w-full px-4 py-2 border border-slate-300 rounded-lg text-sm focus:outline-none focus:border-emerald-800">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Message / Inquiry Type</label>
+                        <textarea rows="4" required placeholder="Ask about custom bulk craft orders or pre-med partnership opportunities..." class="w-full px-4 py-2 border border-slate-300 rounded-lg text-sm focus:outline-none focus:border-emerald-800"></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-emerald-900 hover:bg-emerald-800 text-white font-bold py-3 rounded-lg text-sm transition">Send Message</button>
+                </form>
+                <div id="form-success" class="hidden bg-emerald-50 text-emerald-800 border border-emerald-200 text-xs p-4 rounded-lg text-center font-semibold">
+                    Thank you! Your message has been recorded. We will reach out soon.
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- SHOPPING CART DRAWER / MODAL -->
+    <div id="cart-modal" class="fixed inset-0 bg-black/50 z-50 hidden flex justify-end">
+        <div class="bg-white w-full max-w-md h-full p-6 flex flex-col justify-between shadow-2xl">
+            <div class="space-y-4">
+                <div class="flex justify-between items-center border-b border-slate-100 pb-4">
+                    <h3 class="font-bold text-lg text-slate-900">Your Impact Cart</h3>
+                    <button onclick="toggleCart()" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-xl"></i></button>
+                </div>
+                <div id="cart-items" class="space-y-3 text-sm max-h-96 overflow-y-auto">
+                    <p class="text-slate-500 text-xs">Your cart is currently empty.</p>
+                </div>
+            </div>
+
+            <div class="border-t border-slate-100 pt-4 space-y-3">
+                <div class="flex justify-between font-bold text-base">
+                    <span>Total:</span>
+                    <span id="cart-total" class="text-emerald-900">$0.00</span>
+                </div>
+                <p class="text-xs text-amber-600 font-medium">✨ 100% of profit goes directly to health kits in Peru.</p>
+                <button onclick="checkout()" class="w-full bg-amber-500 hover:bg-amber-600 text-emerald-950 font-bold py-3 rounded-xl transition">Complete Order (Simulation)</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-slate-400 text-xs py-6 border-t border-slate-800">
+        <div class="max-w-6xl mx-auto px-4 text-center space-y-2">
+            <p>© 2026 Shifa & Hope Initiative • A Non-Profit Pre-Medical Social Enterprise</p>
+            <p class="text-slate-500">Designed for Longitudinal Community Impact & Med School Competency Development</p>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE JAVASCRIPT -->
+    <script>
+        // Page Navigation Switcher
+        function showPage(pageId) {
+            document.querySelectorAll('.page-content').forEach(el => el.classList.remove('active'));
+            document.getElementById('page-' + pageId).classList.add('active');
+
+            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('text-amber-300', 'font-semibold'));
+            const activeBtn = document.getElementById('btn-' + pageId);
+            if(activeBtn) activeBtn.classList.add('text-amber-300', 'font-semibold');
+
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+
+        // Cart State Management
+        let cart = [];
+
+        function addToCart(name, price) {
+            cart.push({name, price});
+            updateCartUI();
+            toggleCart();
+        }
+
+        function toggleCart() {
+            const modal = document.getElementById('cart-modal');
+            modal.classList.toggle('hidden');
+        }
+
+        function updateCartUI() {
+            const countEl = document.getElementById('cart-count');
+            const itemsEl = document.getElementById('cart-items');
+            const totalEl = document.getElementById('cart-total');
+
+            countEl.innerText = cart.length;
+
+            if (cart.length === 0) {
+                itemsEl.innerHTML = '<p class="text-slate-500 text-xs">Your cart is currently empty.</p>';
+                totalEl.innerText = '$0.00';
+                return;
+            }
+
+            let total = 0;
+            itemsEl.innerHTML = cart.map((item, idx) => {
+                total += item.price;
+                return `
+                    <div class="flex justify-between items-center bg-slate-50 p-3 rounded-lg">
+                        <div>
+                            <div class="font-bold text-slate-800">${item.name}</div>
+                            <div class="text-xs text-emerald-800 font-semibold">$${item.price}.00</div>
+                        </div>
+                        <button onclick="removeFromCart(${idx})" class="text-red-500 hover:text-red-700 text-xs font-bold"><i class="fa-solid fa-trash"></i></button>
+                    </div>
+                `;
+            }).join('');
+
+            totalEl.innerText = `$${total}.00`;
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        function checkout() {
+            if (cart.length === 0) return alert('Your cart is empty!');
+            alert('JazakAllah Khair for supporting! This demo simulation demonstrates full e-commerce capability.');
+            cart = [];
+            updateCartUI();
+            toggleCart();
+        }
+
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            document.getElementById('form-success').classList.remove('hidden');
+            e.target.reset();
+        }
+    </script>
+</body>
+</html>
